@@ -32,7 +32,7 @@ class Demande
     private ?Post $demandes = null;
 
     #[ORM\ManyToOne(inversedBy: 'demandes')]
-    private ?user $users = null;
+    private ?User $users = null;
 
     public function getId(): ?int
     {
@@ -111,12 +111,12 @@ class Demande
         return $this;
     }
 
-    public function getUsers(): ?user
+    public function getUsers(): ?User
     {
         return $this->users;
     }
 
-    public function setUsers(?user $users): static
+    public function setUsers(?User $users): static
     {
         $this->users = $users;
 

@@ -1,0 +1,41 @@
+{% extends 'baseback.html.twig' %}
+
+
+{% block body %}
+    <h1>Entreprise index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Id</th>
+                <th>Adresse</th>
+                <th>Mail</th>
+                <th>Numero</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entreprise in entreprises %}
+            <tr>
+                <td>{{ entreprise.nom }}</td>
+                <td>{{ entreprise.id }}</td>
+                <td>{{ entreprise.adresse }}</td>
+                <td>{{ entreprise.mail }}</td>
+                <td>{{ entreprise.numero }}</td>
+                
+                <td>
+                    <a class="btn btn btn-info" href="{{ path('app_entreprise_show', {'id': entreprise.id}) }}">show</a>
+                    <a class="btn btn-warning" href="{{ path('app_entreprise_edit', {'id': entreprise.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class = "btn btn-success" href="{{ path('app_entreprise_new') }}">Create new</a>
+{% endblock %}

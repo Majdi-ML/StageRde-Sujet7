@@ -24,11 +24,14 @@ class Entreprise
     #[ORM\Column]
     private ?int $numero = null;
 
-    #[ORM\OneToMany(mappedBy: 'entreprise', targetEntity: user::class)]
+    #[ORM\OneToMany(mappedBy: 'entreprise', targetEntity: User::class)]
     private Collection $emploie;
 
     #[ORM\OneToMany(mappedBy: 'entreprise', targetEntity: Post::class)]
     private Collection $posts;
+
+    #[ORM\Column(length: 255)]
+    private ?string $nom = null;
 
     public function __construct()
     {
@@ -78,14 +81,14 @@ class Entreprise
     }
 
     /**
-     * @return Collection<int, user>
+     * @return Collection<int, User>
      */
     public function getEmploie(): Collection
     {
         return $this->emploie;
     }
 
-    public function addEmploie(user $emploie): static
+    public function addEmploie(User $emploie): static
     {
         if (!$this->emploie->contains($emploie)) {
             $this->emploie->add($emploie);
@@ -95,7 +98,7 @@ class Entreprise
         return $this;
     }
 
-    public function removeEmploie(user $emploie): static
+    public function removeEmploie(User $emploie): static
     {
         if ($this->emploie->removeElement($emploie)) {
             // set the owning side to null (unless already changed)
@@ -133,6 +136,18 @@ class Entreprise
                 $post->setEntreprise(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
 
         return $this;
     }
