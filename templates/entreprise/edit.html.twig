@@ -2,7 +2,15 @@
 
 
 {% block body %}
-    <h1>Edit Entreprise</h1>
+    <div class="pagetitle">
+      <h1>Modfier Entreprise</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div>
 
     {{ include('entreprise/_form.html.twig', {'button_label': 'Update'}) }}
 <br>
