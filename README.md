@@ -22,29 +22,27 @@ Avant de pouvoir exécuter l'application, vous devez effectuer les étapes suiva
 2-Clonez ce dépôt de code sur votre machine locale.
 
 
-git clone https://github.com/votre-utilisateur/plateforme-offres-professionnelles.git
+`git clone https://github.com/votre-utilisateur/plateforme-offres-professionnelles.git`
 
 3-Configurez la base de données MariaDB en créant une nouvelle base de données pour le projet.
 
 4-Mettez à jour le fichier .env avec les informations de connexion à votre base de données.
 
-
-DATABASE_URL=mysql://user:password@localhost:port/nom_base_de_donnees
+`DATABASE_URL=mysql://user:password@localhost:port/nom_base_de_donnees`
 
 5-Installez les dépendances du projet en exécutant la commande suivante dans le répertoire du projet :
 
-composer install
+`composer install`
 
 6-Exécutez les migrations pour créer les tables de base de données nécessaires.
 
-php bin/console doctrine:migrations:migrate
+`php bin/console doctrine:migrations:migrate`
 
 7-Lancez l'application Symfony en utilisant le serveur de développement intégré.
 
+`symfony server:start`
 
-symfony server:start
-
-L'application sera accessible à l'adresse http://localhost:8000.
+L'application sera accessible à l'adresse `http://localhost:8000`.
 
 Contribuer
 Les contributions à ce projet sont les bienvenues. Si vous souhaitez contribuer, veuillez suivre les étapes suivantes :
@@ -53,7 +51,7 @@ Les contributions à ce projet sont les bienvenues. Si vous souhaitez contribuer
 
 1-Créez une branche pour votre fonctionnalité ou correction de bug.
 
-git checkout -b ma-branche
+`git checkout -b ma-branche`
 
 2-Effectuez les modifications nécessaires et testez-les.
 
