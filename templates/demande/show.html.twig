@@ -1,0 +1,50 @@
+{% extends 'baseback.html.twig' %}
+
+
+
+{% block body %}
+    <div class="pagetitle">
+      <h1>Post</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+
+    <table class="table">
+        <tbody>
+            
+           
+           
+             <tr>
+                <th>Nom de condidature :</th>
+                <td>{{ demande.nom}}</td>
+            </tr>
+              <tr>
+                <th>Prenom de condidature :</th>
+                <td>{{ demande.prenom }}</td>
+            </tr>
+              <tr>
+                <th>Email :</th>
+                <td>demande.mail</td>
+            </tr>
+           {# <tr>
+                <th>CV :</th>
+                  <iframe src="{{ asset('%kernel.project_dir%/public/uploads' ~ demande.cv) }}" style="width: 100%; height: 300px; border: none;"></iframe>
+            </tr> #}
+            <tr>
+                <th>lettre de motivation :</th>
+                <td>{{ demande.getLettreMotivation() }}</td>
+            </tr>
+             
+            
+        
+        </tbody>
+    </table>
+
+    <a class="btn btn-danger" href="{{ path('app_demande_post_index') }}">back to list</a>
+     {{ include('demande/delete.html.twig') }}
+    
+{% endblock %}

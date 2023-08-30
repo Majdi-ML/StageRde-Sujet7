@@ -1,0 +1,22 @@
+{% extends 'basefrontend.html.twig' %}
+
+
+{% block content %}
+
+        <div class="page-top" id="templatemo_contact">
+        </div> <!-- /.page-header -->
+
+        <div class="middle-content">
+        <div style="margin-bottom: 60px;" class="container">
+            <div class="row">
+                <div class="our-listing owl-carousel">
+    <h2>Remplir votre demande </h2>
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit">Envoyer</button>
+    {{ form_end(form) }}
+                </div> <!-- /.our-listing -->
+            </div> <!-- /.row -->
+        </div> <!-- /.container -->
+{% endblock %}

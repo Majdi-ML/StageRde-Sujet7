@@ -1,0 +1,63 @@
+{% extends 'baseback.html.twig' %}
+
+
+
+{% block body %}
+    <div class="pagetitle">
+      <h1>Post</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Titre</th>
+                <td>{{ post.titre }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ post.type }}</td>
+            </tr>
+            <tr>
+                <th>Competence</th>
+                <td>{{ post.competence }}</td>
+            </tr>
+             <tr>
+                <th>Expérience</th>
+                <td>{{ post.getNiveauEtude() }}</td>
+            </tr>
+              <tr>
+                <th>Date début</th>
+                <td>{{ post.getDateDebut() ? post.getDateDebut()|date('Y-m-d') : ''  }}</td>
+            </tr>
+              <tr>
+                <th>Date fin</th>
+                <td>{{ post.getDateFin() ? post.getDateFin()|date('Y-m-d') : ''  }}</td>
+            </tr>
+              <tr>
+                <th>Cible</th>
+                <td>{{ post.cible }}</td>
+            </tr>
+            <tr>
+                <th>Entreprise</th>
+                <td>{{ post.entreprise }}</td>
+            </tr>
+              <tr>
+                <th>Déscription</th>
+                <td>{{ post.description }}</td>
+            </tr>
+            
+        
+        </tbody>
+    </table>
+
+    <a class="btn btn-danger" href="{{ path('app_post_index') }}">back to list</a>
+
+    <a class="btn btn-warning" href="{{ path('app_post_edit', {'id': post.id}) }}">edit</a>
+    {{ include('post/_delete_form.html.twig') }}
+{% endblock %}

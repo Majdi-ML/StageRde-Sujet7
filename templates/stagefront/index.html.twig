@@ -1,0 +1,48 @@
+{% extends 'basefrontend.html.twig' %}
+
+{% block title %}
+         <h2> les offres de stage </h2>
+{% endblock %}
+
+{% block content %}
+        <div class="page-top" id="templatemo_services">
+        </div> <!-- /.page-header -->
+      <form id="search-form" action="{{ path('stage_search') }}" method="get">
+		<div class="form-group">
+			<input type="text" name="q" class="form-control" value="{{ query }}">
+		</div>
+		<button type="submit" class="btn btn-primary">Search</button>
+	</form>  
+   {% for message in app.flashes('notice') %}
+	        	<div class="alert alert-success ">
+			       {{ message }}
+		         </div>
+        	{% endfor %}
+       <div style="margin-top: 80px;" class="ticket-list">
+            <div class="container">
+                <div class="row">
+        {% for post in posts %}
+                    <div class="col-md-3 col-sm-6">
+                        <div class="ticket-item">
+                            <h4><a href="#">{{ post.titre }}</a></h4>
+                            <p><span style="color: #2f7c72;" class="green">Competence: </span>{{ post.competence }}</p>
+                            <p><span style="color: #2f7c72;" class="green">Type de stage :</span>{{ post.type }}</p>
+                            <p><span style="color: #2f7c72;" class="green">Catégorie cible :</span>{{ post.cible }}</p>
+                            <p><span style="color: #2f7c72;" class="green">Entrprise : </span>{{ post.entreprise }}</p>
+                            <p><span style="color: #2f7c72;" class="green">Date début: </span>{{ post.getDateDebut() ? post.getDateDebut()|date('Y-m-d') : '' }}</p>
+                             <p><span style="color: #2f7c72;" class="green">Date fin: </span>{{ post.getDateFin() ? post.getDateFin()|date('Y-m-d') : '' }}</p>
+                            <p><span style="color: #2f7c72;" class="green">Description: </span>{{ post.description }} </p>
+                            <a href="{{ path('app_postulation_stage_postuler', {'id': post.id}) }}" class="ticket-btn">Postuler maintenant </a>
+                        </div> <!-- /.ticket-item -->
+                    </div> <!-- /.col-md-3 -->
+        {% else %}
+                
+                    <div class="col-md-3 col-sm-6">
+                no records found
+            </div>
+        {% endfor %}
+                </div> <!-- /.row -->
+            </div> <!-- /.container -->
+        </div> <!-- /.ticket-list -->
+
+{% endblock %}

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\HttpFoundation\File\File;
 use App\Repository\DemandeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -13,7 +13,7 @@ class Demande
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
+   #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
@@ -33,6 +33,7 @@ class Demande
 
     #[ORM\ManyToOne(inversedBy: 'demandes')]
     private ?User $users = null;
+
 
     public function getId(): ?int
     {

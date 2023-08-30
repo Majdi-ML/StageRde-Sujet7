@@ -38,6 +38,18 @@ class PostRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findByType($query)
+    {
+        $qb = $this->createQueryBuilder('e');
+        $qb->where($qb->expr()->orX(
+            $qb->expr()->like('e.type', ':query'),
+            $qb->expr()->like('e.cible', ':query'),
+           
+        ));
+        $qb->setParameter('query', '%'.$query.'%');
+
+        return $qb->getQuery()->getResult();
+    }
 
 //    /**
 //     * @return Post[] Returns an array of Post objects

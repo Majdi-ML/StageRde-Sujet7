@@ -1,0 +1,61 @@
+{% extends 'baseback.html.twig' %}
+
+
+{% block body %}
+<div class="pagetitle">
+      <h1 class="pagetitle"> Les demandes </h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+    
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Id post</th>
+                <th>Id user</th>
+                <th>Nom de condidate </th>
+               <th>Prénom de condidate</th>
+                <th>Email </th>
+                <th>CV</th>
+                <th>lettre de motivation </th>
+                
+               
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande in demandes %}
+            <tr>
+                <td>{{ demande.id }}</td>
+                <td>{{ demande.demandes }}</td>
+                <td>{{ demande.users }}</td>
+                <td>{{ demande.nom }}</td>
+                <td>{{ demande.prenom}}</td>
+                <td>{{ demande.mail }}</td>
+                <td>
+                 <a href="{{ path('download_demande_file', {'id': demande.id}) }}" > download CV </a>
+
+
+                </td> 
+                 <td>{{ demande.getLettreMotivation() }}</td>
+                
+               <td>
+                    <a class="btn btn btn-info" href="{{ path('app_demande_post_show', {'id': demande.id}) }}">show</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

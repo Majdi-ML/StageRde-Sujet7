@@ -1,0 +1,19 @@
+{% extends 'baseback.html.twig' %}
+
+
+
+{% block body %}
+    <div class="pagetitle">
+      <h1>Ajouter une offre </h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+      </nav>
+    </div>
+
+    {{ include('post/_form.html.twig') }}
+<br>
+    <a class="btn btn-danger" href="{{ path('app_post_index') }}">back to list</a>
+{% endblock %}
